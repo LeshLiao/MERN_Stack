@@ -1,0 +1,5 @@
+.DS_Store
+**/.DS_Store
+backend/.env
+backend/node_modules/
+backend/_config.yml
