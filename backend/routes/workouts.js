@@ -14,29 +14,19 @@ router.get('/:id', (req, res) => {
 
 // POST
 router.post('/', async (req, res) => {
+
     const {title, load, reps} = req.body
-    /*
+
+    console.log("title="+title+",load="+load+",reps="+reps)
+
     try{
-        const workout = await Workout.create(title, load, reps)
+        const workout = await Workout.create({ title: title, load: load, reps: reps })
         res.status(200).json(workout)
     } catch (error) {
         res.status(400).json({error: error.message})
     }
-    */
-    // res.json({ mssg: 'POST a single workout yes post' })
 
-
-
-    // Using create()
-    Workout.create({ title: 'Situps', load: 50, reps: 15 })
-        .then(workout => {
-            res.status(200).json(workout)
-            // Do something with the created workout
-        })
-        .catch(error => {
-            res.status(400).json({error: error.message})
-            // Handle error
-        });
+    // res.json({ mssg: 'POST a single workout' })
 })
 
 // DELETE
