@@ -10,7 +10,7 @@ const app = express()
 const cors = require("cors")
 
 const corsOptions = {
-    origin: "https://mern-stack-frontend-0uii.onrender.com"
+    origin: ["https://mern-stack-frontend-0uii.onrender.com","http://localhost:3000"]
 }
 
 app.use(express.json())

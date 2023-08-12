@@ -1,12 +1,13 @@
 const { response } = require('express')
 const Workout = require('../models/workoutModel')
+const CardSheet = require('../models/cardSheet')
 const mongoose = require('mongoose')
 
 // get all workouts
 const getWorkouts = async (req, res) => {
-    const workouts = await Workout.find({}).sort({createAt: -1})
+    const card_sheet = await CardSheet.find({}).sort({createAt: -1})
 
-    res.status(200).json(workouts)
+    res.status(200).json(card_sheet)
 }
 
 // get a single workout
@@ -30,17 +31,16 @@ const getWorkout = async (req, res) => {
 
 // create new workout
 const createWorkout = async(req,res) => {
-    const {title, load, reps} = req.body
+    const {card_id, card_data} = req.body
 
-    console.log("title="+title+",load="+load+",reps="+reps)
+    console.log("card_id="+card_id+",card_data="+card_data)
 
     try{
-        const workout = await Workout.create({ title: title, load: load, reps: reps })
-        res.status(200).json(workout)
+        const card_sheet = await CardSheet.create({ card_id: card_id, card_data: card_data })
+        res.status(200).json(card_sheet)
     } catch (error) {
         res.status(400).json({error: error.message})
     }
-
 }
 
 
