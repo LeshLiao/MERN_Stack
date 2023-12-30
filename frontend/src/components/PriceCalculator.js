@@ -12,4 +12,4 @@ class PriceCalculator {
         return this.basePrice * (20 / 100);
     }
 }
-module.exports = PriceCalculator
+export default PriceCalculator
