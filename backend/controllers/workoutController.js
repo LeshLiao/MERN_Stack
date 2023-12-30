@@ -1,16 +1,16 @@
 const { response } = require('express')
-const Workout = require('../models/workoutModel')
+// const Workout = require('../models/workoutModel')
 const CardSheet = require('../models/cardSheet')
 const mongoose = require('mongoose')
 
-// get all workouts
+// get all cardInfo
 const getWorkouts = async (req, res) => {
     const card_sheet = await CardSheet.find({}).sort({createAt: -1})
 
     res.status(200).json(card_sheet)
 }
 
-// get a single workout
+// get a single cardInfo
 const getWorkout = async (req, res) => {
     const { id } = req.params
 
@@ -18,18 +18,16 @@ const getWorkout = async (req, res) => {
         return res.status(404).json({error: 'invalid ID!'})
     }
 
-    const workout = await Workout.findById(id)
+    const cardInfo = await CardSheet.findById(id)
 
-    if(!workout) {
-        return response.status(404).json({error: 'No such workout'})
+    if(!cardInfo) {
+        return response.status(404).json({error: 'No such cardInfo'})
     }
 
     res.status(200).json(workout)
 }
 
-
-
-// create new workout
+// create new card
 const createWorkout = async(req,res) => {
     const {card_id, card_data} = req.body
 
@@ -44,7 +42,7 @@ const createWorkout = async(req,res) => {
 }
 
 
-// delete a workout
+// delete a card
 const deleteWorkout = async (req, res) => {
     const { id } = req.params
 
@@ -52,17 +50,17 @@ const deleteWorkout = async (req, res) => {
         return res.status(404).json({error: 'invalid ID!'})
     }
 
-    const workout = await Workout.findOneAndDelete({_id: id})
+    const cardInfo = await CardSheet.findOneAndDelete({_id: id})
 
-    if(!workout) {
-        return response.status(400).json({error: 'No such workout'})
+    if(!cardInfo) {
+        return response.status(400).json({error: 'No such cardInfo'})
     }
 
     res.status(200).json(workout)
 
 }
 
-// update a workout
+// update a card
 const updateWorkout = async (req, res) => {
     const { id } = req.params
 
@@ -70,15 +68,15 @@ const updateWorkout = async (req, res) => {
         return res.status(404).json({error: 'invalid ID!'})
     }
 
-    const workout = await Workout.findOneAndUpdate({_id: id}, {
+    const cardInfo = await CardSheet.findOneAndUpdate({_id: id}, {
         ...req.body
     })
 
-    if(!workout) {
-        return response.status(400).json({error: 'No such workout'})
+    if(!cardInfo) {
+        return response.status(400).json({error: 'No such cardInfo'})
     }
 
-    res.status(200).json(workout)
+    res.status(200).json(cardInfo)
 }
 
 

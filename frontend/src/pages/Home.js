@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 // components
 import WorkoutDetails from '../components/WorkoutDetails'
+import CardDetails from '../components/CardDetails'
 
 const Home = () => {
     const [workouts, setWorkouts] = useState(null)
@@ -19,17 +20,6 @@ const Home = () => {
 
         fetchWorkouts()
     }, [])
-/*
-    return (
-        <div className="home">
-            <div className='workouts'>
-                {workouts && workouts.map((workout) => (
-                    <WorkoutDetails key={workout._id} workout={workout} />
-                ))}
-            </div>
-        </div>
-    )
-*/
     return (
         <div>
             <table>
@@ -42,19 +32,13 @@ const Home = () => {
                     {
                         workouts && workouts
                         .sort((a,b) => a.createdAt > b.createdAt ? -1 : 1)
-                        .map((d)=>(
-                            <tr key={d._id}>
-                                <td>{d.createdAt}</td>
-                                <td>{d.card_id}</td>
-                                <td>{d.card_data}</td>
-                            </tr>
+                        .map((d) => (
+                            <CardDetails key={d._id} d={d} />
                         ))
                     }
                 </tbody>
             </table>
         </div>
     )
-
-
 }
 export default Home
