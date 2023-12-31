@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom'
-import PriceCalculator from '../components/PriceCalculator'
+import Counter from './Counter'
 
 const Navbar = () => {
     return (
         <header>
             <div className="container">
                 <Link to ="/">
-                    <h1>Monthly Time Sheet_001</h1>
-                    <h2>{new PriceCalculator(2000).getTotal()}</h2>
+                    <h1>Monthly Time Sheet</h1>
                 </Link>
             </div>
+            <Counter/>
         </header>
     )
 }
