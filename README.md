@@ -7,3 +7,6 @@ nano /lib/systemd/system/rfid.card.reader.service
 
 ## RFID reader
 /home/pi/python-stuff/others/rfid/Read.py
+
+## check pi wifi
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
